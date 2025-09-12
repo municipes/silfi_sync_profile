@@ -1,0 +1,24 @@
+{
+  "name": "municipes/silfi_sync_profile",
+  "description": "Synchronizes user profile data from OpenCity service when accessing booking appointments",
+  "type": "drupal-module",
+  "license": "GPL-3.0-only",
+  "homepage": "https://github.com/municipes/silfi_sync_profile",
+  "authors": [
+    {
+      "name": "Maurizio Cavalletti",
+      "homepage": "https://www.drupal.org/u/maurizio_akabit",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/municipes/silfi_sync_profile/issues",
+    "source": "https://github.com/municipes/silfi_sync_profile"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "drupal/core": "^10 || ^11.1",
+    "municipes/wso2_auth": "^1.0"
+  }
+}
