@@ -1,0 +1,11 @@
+name: Silfi Sync Profile
+type: module
+description: 'Synchronizes user profile data from OpenCity service when accessing booking appointments'
+core_version_requirement: ^10 || ^11.1
+package: Authentication
+dependencies:
+  - wso2_auth:wso2_auth
+  - agenda_drupal_prato:agenda_drupal_prato
+# php: 8.3
+
+version: 1.0.0

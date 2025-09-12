@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Silfi Sync Profile module file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function silfi_sync_profile_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.silfi_sync_profile':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Silfi Sync Profile module automatically synchronizes user profile data from the OpenCity service when users access the booking appointments page.') . '</p>';
+      $output .= '<h3>' . t('How it works') . '</h3>';
+      $output .= '<ul>';
+      $output .= '<li>' . t('When an authenticated user visits /servizi/prenotazione-appuntamenti/new, the module automatically triggers a profile sync.') . '</li>';
+      $output .= '<li>' . t('The sync only runs once every 30 minutes per user to avoid excessive API calls.') . '</li>';
+      $output .= '<li>' . t('User data is fetched from the OpenCity API using the WSO2 authentication token.') . '</li>';
+      $output .= '<li>' . t('The following profile fields are updated: mobile phone and email address.') . '</li>';
+      $output .= '</ul>';
+      return $output;
+  }
+}

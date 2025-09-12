@@ -1,0 +1,23 @@
+services:
+  silfi_sync_profile.sync_service:
+    class: Drupal\silfi_sync_profile\Service\ProfileSyncService
+    arguments:
+      - '@http_client'
+      - '@config.factory'
+      - '@logger.channel.silfi_sync_profile'
+      - '@entity_type.manager'
+      - '@current_user'
+      - '@request_stack'
+
+  logger.channel.silfi_sync_profile:
+    parent: logger.channel_base
+    arguments: ['silfi_sync_profile']
+
+  silfi_sync_profile.route_subscriber:
+    class: Drupal\silfi_sync_profile\EventSubscriber\RouteSubscriber
+    arguments:
+      - '@silfi_sync_profile.sync_service'
+      - '@current_user'
+      - '@logger.channel.silfi_sync_profile'
+    tags:
+      - { name: 'event_subscriber' }

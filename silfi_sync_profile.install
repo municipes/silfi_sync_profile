@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Silfi Sync Profile module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function silfi_sync_profile_install() {
+  // Log the installation.
+  \Drupal::logger('silfi_sync_profile')->notice('Silfi Sync Profile module installed.');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function silfi_sync_profile_uninstall() {
+  // Clean up all sync timestamps from state.
+  $state = \Drupal::state();
+
+  // Get all state keys that start with our prefix
+  $keys_to_delete = [];
+  $all_keys = $state->getMultiple([]);
+
+  foreach (array_keys($all_keys) as $key) {
+    if (strpos($key, 'silfi_sync_profile.last_sync.') === 0) {
+      $keys_to_delete[] = $key;
+    }
+  }
+
+  // Delete the keys
+  foreach ($keys_to_delete as $key) {
+    $state->delete($key);
+  }
+
+  // Log the uninstallation.
+  \Drupal::logger('silfi_sync_profile')->notice('Silfi Sync Profile module uninstalled. Cleaned up @count sync timestamps.', [
+    '@count' => count($keys_to_delete),
+  ]);
+}
