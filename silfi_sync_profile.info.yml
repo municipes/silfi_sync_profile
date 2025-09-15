@@ -5,7 +5,7 @@ core_version_requirement: ^10 || ^11.1
 package: Authentication
 dependencies:
   - wso2_auth:wso2_auth
-  - agenda_drupal_prato:agenda_drupal_prato
+  - prenotazione_appuntamenti:prenotazione_appuntamenti
 # php: 8.3
 
 version: 1.0.0
